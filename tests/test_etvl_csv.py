@@ -31,23 +31,36 @@ from datafun.etvl_csv import run_etvl_csv
 def test_run_etvl_csv(tmp_path: Path) -> None:
     """Confirm the CSV ETVL pipeline runs and creates output."""
     input_file = tmp_path / "input.csv"
-    output_file = tmp_path / "output.txt"
+    output_file = tmp_path / "output.csv"
+    chart_file = tmp_path / "chart.png"
 
     with input_file.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=["Ladder score"])
+        writer = csv.DictWriter(
+            file,
+            fieldnames=["Country name", "Ladder score"],
+        )
         writer.writeheader()
-        writer.writerow({"Ladder score": "5.0"})
-        writer.writerow({"Ladder score": "6.0"})
-        writer.writerow({"Ladder score": "7.0"})
+        writer.writerow(
+            {"Country name": "Country A", "Ladder score": "5.0"}
+        )
+        writer.writerow(
+            {"Country name": "Country B", "Ladder score": "6.0"}
+        )
+        writer.writerow(
+            {"Country name": "Country C", "Ladder score": "7.0"}
+        )
 
     log = logging.getLogger("test_etvl_csv")
 
     run_etvl_csv(
         input_file=input_file,
         output_file=output_file,
+        chart_file=chart_file,
         column_name="Ladder score",
+        country_column="Country name",
         log=log,
     )
 
     assert output_file.exists()
     assert output_file.read_text(encoding="utf-8").strip()
+    assert chart_file.exists()

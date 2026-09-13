@@ -180,3 +180,378 @@ of a plain-text document before any deeper reading.
 2026-09-11 22:12:24 | INFO | P03 | ===================================
 2026-09-11 22:12:24 | INFO | P03 | END main() - Executed successfully!
 2026-09-11 22:12:24 | INFO | P03 | ===================================
+2026-09-13 15:52:27 | INFO | P03 | === RUN START ===
+2026-09-13 15:52:27 | INFO | P03 | project=P03
+2026-09-13 15:52:27 | INFO | P03 | repo_dir=datafun-03-analytics
+2026-09-13 15:52:27 | INFO | P03 | python=3.14.7
+2026-09-13 15:52:27 | INFO | P03 | os=Windows 11
+2026-09-13 15:52:27 | INFO | P03 | shell=powershell
+2026-09-13 15:52:27 | INFO | P03 | cwd=.
+2026-09-13 15:52:27 | INFO | P03 | github_actions=False
+2026-09-13 15:52:27 | INFO | P03 | ===================================
+2026-09-13 15:52:27 | INFO | P03 | START main()
+2026-09-13 15:52:27 | INFO | P03 | ===================================
+2026-09-13 15:52:27 | INFO | P03 | raw folder = data\raw
+2026-09-13 15:52:27 | INFO | P03 | processed folder = data\processed
+2026-09-13 15:52:27 | INFO | P03 | ===================================
+2026-09-13 15:52:27 | INFO | P03 | CSV pipeline
+2026-09-13 15:52:27 | INFO | P03 | ===================================
+2026-09-13 15:52:27 | INFO | P03 | Pipeline: 
+Read the world happiness CSV file,
+extract the selected numeric column,
+calculate descriptive statistics,
+verify the results,
+and write the statistics to a text file.
+
+2026-09-13 15:52:27 | INFO | P03 | Column: Ladder score
+2026-09-13 15:52:27 | INFO | P03 | Country column: Country name
+2026-09-13 15:52:27 | INFO | P03 | Why: 
+The ladder score is the survey's overall happiness measure,
+so its distribution is the natural first summary of this dataset.
+
+2026-09-13 15:52:27 | INFO | P03 | CSV: START
+2026-09-13 15:52:27 | INFO | P03 | Extracted 153 rows from 2020_happiness.csv
+2026-09-13 15:52:27 | INFO | P03 | Average happiness score: 5.47
+2026-09-13 15:52:27 | INFO | P03 | Countries above average: 80
+2026-09-13 15:52:27 | INFO | P03 | Verified 80 countries above the average score of 5.47
+2026-09-13 15:52:27 | INFO | P03 | Saved above-average results to data\processed\countries_above_average.csv
+2026-09-13 15:52:28 | INFO | P03 | Saved happiness chart to data\processed\happiness_above_average.png
+2026-09-13 15:52:28 | INFO | P03 | CSV: wrote data\processed\countries_above_average.csv
+2026-09-13 15:52:28 | INFO | P03 | CSV: END
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | JSON pipeline
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | Pipeline: 
+Read the astronauts JSON file,
+extract the list of people,
+count people by spacecraft,
+verify the results,
+and write the counts to a text file.
+
+2026-09-13 15:52:28 | INFO | P03 | Grouping: people by craft
+2026-09-13 15:52:28 | INFO | P03 | Why: 
+Each person is assigned to a craft, so counting by craft shows
+how the crew is distributed across spacecraft.
+
+2026-09-13 15:52:28 | INFO | P03 | JSON: START
+2026-09-13 15:52:28 | INFO | P03 | JSON: wrote data\processed\json_astronauts_by_craft.txt
+2026-09-13 15:52:28 | INFO | P03 | JSON: END
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | XLSX pipeline
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | Pipeline: 
+Read the feedback Excel file,
+extract text from the selected column,
+count occurrences of the selected word,
+verify the result,
+and write the count to a text file.
+
+2026-09-13 15:52:28 | INFO | P03 | Word: GitHub in column A
+2026-09-13 15:52:28 | INFO | P03 | Why: 
+Feedback mentions GitHub when students hit repository issues,
+so counting the word estimates how often that came up.
+
+2026-09-13 15:52:28 | INFO | P03 | XLSX: START
+2026-09-13 15:52:28 | INFO | P03 | XLSX: wrote data\processed\xlsx_feedback_github_count.txt
+2026-09-13 15:52:28 | INFO | P03 | XLSX: END
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | TEXT pipeline
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | Pipeline: 
+Read the Romeo and Juliet text file,
+count its lines, words, and characters,
+verify the results,
+and write the summary to a text file.
+
+2026-09-13 15:52:28 | INFO | P03 | Why: 
+Line, word, and character counts give a quick size profile
+of a plain-text document before any deeper reading.
+
+2026-09-13 15:52:28 | INFO | P03 | TXT: START
+2026-09-13 15:52:28 | INFO | P03 | TXT: wrote data\processed\txt_summary.txt
+2026-09-13 15:52:28 | INFO | P03 | TXT: END
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:52:28 | INFO | P03 | END main() - Executed successfully!
+2026-09-13 15:52:28 | INFO | P03 | ===================================
+2026-09-13 15:55:52 | INFO | P03 | === RUN START ===
+2026-09-13 15:55:52 | INFO | P03 | project=P03
+2026-09-13 15:55:52 | INFO | P03 | repo_dir=datafun-03-analytics
+2026-09-13 15:55:52 | INFO | P03 | python=3.14.7
+2026-09-13 15:55:52 | INFO | P03 | os=Windows 11
+2026-09-13 15:55:52 | INFO | P03 | shell=powershell
+2026-09-13 15:55:52 | INFO | P03 | cwd=.
+2026-09-13 15:55:52 | INFO | P03 | github_actions=False
+2026-09-13 15:55:52 | INFO | P03 | ===================================
+2026-09-13 15:55:52 | INFO | P03 | START main()
+2026-09-13 15:55:52 | INFO | P03 | ===================================
+2026-09-13 15:55:52 | INFO | P03 | raw folder = data\raw
+2026-09-13 15:55:52 | INFO | P03 | processed folder = data\processed
+2026-09-13 15:55:52 | INFO | P03 | ===================================
+2026-09-13 15:55:52 | INFO | P03 | CSV pipeline
+2026-09-13 15:55:52 | INFO | P03 | ===================================
+2026-09-13 15:55:52 | INFO | P03 | Pipeline: 
+Read the world happiness CSV file,
+calculate the average happiness score,
+identify countries above the average,
+verify the results,
+save the countries to a CSV file,
+and create a chart of the top 10 countries by happiness score.
+
+2026-09-13 15:55:52 | INFO | P03 | Column: Ladder score
+2026-09-13 15:55:52 | INFO | P03 | Country column: Country name
+2026-09-13 15:55:52 | INFO | P03 | Why: 
+The ladder score is the survey's overall happiness measure,
+so its distribution is the natural first summary of this dataset.
+
+2026-09-13 15:55:52 | INFO | P03 | CSV: START
+2026-09-13 15:55:52 | INFO | P03 | Extracted 153 rows from 2020_happiness.csv
+2026-09-13 15:55:52 | INFO | P03 | Average happiness score: 5.47
+2026-09-13 15:55:52 | INFO | P03 | Countries above average: 80
+2026-09-13 15:55:52 | INFO | P03 | Verified 80 countries above the average score of 5.47
+2026-09-13 15:55:52 | INFO | P03 | Saved above-average results to data\processed\countries_above_average.csv
+2026-09-13 15:55:53 | INFO | P03 | Saved happiness chart to data\processed\happiness_above_average.png
+2026-09-13 15:55:53 | INFO | P03 | CSV: wrote data\processed\countries_above_average.csv
+2026-09-13 15:55:53 | INFO | P03 | CSV: END
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | JSON pipeline
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | Pipeline: 
+Read the astronauts JSON file,
+extract the list of people,
+count people by spacecraft,
+verify the results,
+and write the counts to a text file.
+
+2026-09-13 15:55:53 | INFO | P03 | Grouping: people by craft
+2026-09-13 15:55:53 | INFO | P03 | Why: 
+Each person is assigned to a craft, so counting by craft shows
+how the crew is distributed across spacecraft.
+
+2026-09-13 15:55:53 | INFO | P03 | JSON: START
+2026-09-13 15:55:53 | INFO | P03 | JSON: wrote data\processed\json_astronauts_by_craft.txt
+2026-09-13 15:55:53 | INFO | P03 | JSON: END
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | XLSX pipeline
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | Pipeline: 
+Read the feedback Excel file,
+extract text from the selected column,
+count occurrences of the selected word,
+verify the result,
+and write the count to a text file.
+
+2026-09-13 15:55:53 | INFO | P03 | Word: GitHub in column A
+2026-09-13 15:55:53 | INFO | P03 | Why: 
+Feedback mentions GitHub when students hit repository issues,
+so counting the word estimates how often that came up.
+
+2026-09-13 15:55:53 | INFO | P03 | XLSX: START
+2026-09-13 15:55:53 | INFO | P03 | XLSX: wrote data\processed\xlsx_feedback_github_count.txt
+2026-09-13 15:55:53 | INFO | P03 | XLSX: END
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | TEXT pipeline
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | Pipeline: 
+Read the Romeo and Juliet text file,
+count its lines, words, and characters,
+verify the results,
+and write the summary to a text file.
+
+2026-09-13 15:55:53 | INFO | P03 | Why: 
+Line, word, and character counts give a quick size profile
+of a plain-text document before any deeper reading.
+
+2026-09-13 15:55:53 | INFO | P03 | TXT: START
+2026-09-13 15:55:53 | INFO | P03 | TXT: wrote data\processed\txt_summary.txt
+2026-09-13 15:55:53 | INFO | P03 | TXT: END
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:55:53 | INFO | P03 | END main() - Executed successfully!
+2026-09-13 15:55:53 | INFO | P03 | ===================================
+2026-09-13 15:59:09 | INFO | P03 | === RUN START ===
+2026-09-13 15:59:09 | INFO | P03 | project=P03
+2026-09-13 15:59:09 | INFO | P03 | repo_dir=datafun-03-analytics
+2026-09-13 15:59:09 | INFO | P03 | python=3.14.7
+2026-09-13 15:59:10 | INFO | P03 | os=Windows 11
+2026-09-13 15:59:10 | INFO | P03 | shell=powershell
+2026-09-13 15:59:10 | INFO | P03 | cwd=.
+2026-09-13 15:59:10 | INFO | P03 | github_actions=False
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | START main()
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | raw folder = data\raw
+2026-09-13 15:59:10 | INFO | P03 | processed folder = data\processed
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | CSV pipeline
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | Pipeline: 
+Read the world happiness CSV file,
+calculate the average happiness score,
+identify countries above the average,
+verify the results,
+save the countries to a CSV file,
+and create a chart of the top 10 countries by happiness score.
+
+2026-09-13 15:59:10 | INFO | P03 | Column: Ladder score
+2026-09-13 15:59:10 | INFO | P03 | Country column: Country name
+2026-09-13 15:59:10 | INFO | P03 | Why: 
+The ladder score is the survey's overall happiness measure,
+so its distribution is the natural first summary of this dataset.
+
+2026-09-13 15:59:10 | INFO | P03 | CSV: START
+2026-09-13 15:59:10 | INFO | P03 | Extracted 153 rows from 2020_happiness.csv
+2026-09-13 15:59:10 | INFO | P03 | Average happiness score: 5.47
+2026-09-13 15:59:10 | INFO | P03 | Countries above average: 80
+2026-09-13 15:59:10 | INFO | P03 | Verified 80 countries above the average score of 5.47
+2026-09-13 15:59:10 | INFO | P03 | Saved above-average results to data\processed\countries_above_average.csv
+2026-09-13 15:59:10 | INFO | P03 | Saved happiness chart to data\processed\happiness_above_average.png
+2026-09-13 15:59:10 | INFO | P03 | CSV: wrote data\processed\countries_above_average.csv
+2026-09-13 15:59:10 | INFO | P03 | CSV: END
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | JSON pipeline
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | Pipeline: 
+Read the astronauts JSON file,
+extract the list of people,
+count people by spacecraft,
+verify the results,
+and write the counts to a text file.
+
+2026-09-13 15:59:10 | INFO | P03 | Grouping: people by craft
+2026-09-13 15:59:10 | INFO | P03 | Why: 
+Each person is assigned to a craft, so counting by craft shows
+how the crew is distributed across spacecraft.
+
+2026-09-13 15:59:10 | INFO | P03 | JSON: START
+2026-09-13 15:59:10 | INFO | P03 | JSON: wrote data\processed\json_astronauts_by_craft.txt
+2026-09-13 15:59:10 | INFO | P03 | JSON: END
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | XLSX pipeline
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | Pipeline: 
+Read the feedback Excel file,
+extract text from the selected column,
+count occurrences of the selected word,
+verify the result,
+and write the count to a text file.
+
+2026-09-13 15:59:10 | INFO | P03 | Word: GitHub in column A
+2026-09-13 15:59:10 | INFO | P03 | Why: 
+Feedback mentions GitHub when students hit repository issues,
+so counting the word estimates how often that came up.
+
+2026-09-13 15:59:10 | INFO | P03 | XLSX: START
+2026-09-13 15:59:10 | INFO | P03 | XLSX: wrote data\processed\xlsx_feedback_github_count.txt
+2026-09-13 15:59:10 | INFO | P03 | XLSX: END
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | TEXT pipeline
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | Pipeline: 
+Read the Romeo and Juliet text file,
+count its lines, words, and characters,
+verify the results,
+and write the summary to a text file.
+
+2026-09-13 15:59:10 | INFO | P03 | Why: 
+Line, word, and character counts give a quick size profile
+of a plain-text document before any deeper reading.
+
+2026-09-13 15:59:10 | INFO | P03 | TXT: START
+2026-09-13 15:59:10 | INFO | P03 | TXT: wrote data\processed\txt_summary.txt
+2026-09-13 15:59:10 | INFO | P03 | TXT: END
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 15:59:10 | INFO | P03 | END main() - Executed successfully!
+2026-09-13 15:59:10 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | === RUN START ===
+2026-09-13 16:04:42 | INFO | P03 | project=P03
+2026-09-13 16:04:42 | INFO | P03 | repo_dir=datafun-03-analytics
+2026-09-13 16:04:42 | INFO | P03 | python=3.14.7
+2026-09-13 16:04:42 | INFO | P03 | os=Windows 11
+2026-09-13 16:04:42 | INFO | P03 | shell=powershell
+2026-09-13 16:04:42 | INFO | P03 | cwd=.
+2026-09-13 16:04:42 | INFO | P03 | github_actions=False
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | START main()
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | raw folder = data\raw
+2026-09-13 16:04:42 | INFO | P03 | processed folder = data\processed
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | CSV pipeline
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | Pipeline: 
+Read the world happiness CSV file,
+calculate the average happiness score,
+identify countries above the average,
+verify the results,
+save the countries to a CSV file,
+and create a chart of the top 10 countries by happiness score.
+
+2026-09-13 16:04:42 | INFO | P03 | Column: Ladder score
+2026-09-13 16:04:42 | INFO | P03 | Country column: Country name
+2026-09-13 16:04:42 | INFO | P03 | Why: 
+The ladder score is the survey's overall happiness measure,
+so its distribution is the natural first summary of this dataset.
+
+2026-09-13 16:04:42 | INFO | P03 | CSV: START
+2026-09-13 16:04:42 | INFO | P03 | Extracted 153 rows from 2020_happiness.csv
+2026-09-13 16:04:42 | INFO | P03 | Average happiness score: 5.47
+2026-09-13 16:04:42 | INFO | P03 | Countries above average: 80
+2026-09-13 16:04:42 | INFO | P03 | Verified 80 countries above the average score of 5.47
+2026-09-13 16:04:42 | INFO | P03 | Saved above-average results to data\processed\countries_above_average.csv
+2026-09-13 16:04:42 | INFO | P03 | Saved happiness chart to data\processed\happiness_above_average.png
+2026-09-13 16:04:42 | INFO | P03 | CSV: wrote data\processed\countries_above_average.csv
+2026-09-13 16:04:42 | INFO | P03 | CSV: END
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | JSON pipeline
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | Pipeline: 
+Read the astronauts JSON file,
+extract the list of people,
+count people by spacecraft,
+verify the results,
+and write the counts to a text file.
+
+2026-09-13 16:04:42 | INFO | P03 | Grouping: people by craft
+2026-09-13 16:04:42 | INFO | P03 | Why: 
+Each person is assigned to a craft, so counting by craft shows
+how the crew is distributed across spacecraft.
+
+2026-09-13 16:04:42 | INFO | P03 | JSON: START
+2026-09-13 16:04:42 | INFO | P03 | JSON: wrote data\processed\json_astronauts_by_craft.txt
+2026-09-13 16:04:42 | INFO | P03 | JSON: END
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | XLSX pipeline
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | Pipeline: 
+Read the feedback Excel file,
+extract text from the selected column,
+count occurrences of the selected word,
+verify the result,
+and write the count to a text file.
+
+2026-09-13 16:04:42 | INFO | P03 | Word: GitHub in column A
+2026-09-13 16:04:42 | INFO | P03 | Why: 
+Feedback mentions GitHub when students hit repository issues,
+so counting the word estimates how often that came up.
+
+2026-09-13 16:04:42 | INFO | P03 | XLSX: START
+2026-09-13 16:04:42 | INFO | P03 | XLSX: wrote data\processed\xlsx_feedback_github_count.txt
+2026-09-13 16:04:42 | INFO | P03 | XLSX: END
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | TEXT pipeline
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | Pipeline: 
+Read the Romeo and Juliet text file,
+count its lines, words, and characters,
+verify the results,
+and write the summary to a text file.
+
+2026-09-13 16:04:42 | INFO | P03 | Why: 
+Line, word, and character counts give a quick size profile
+of a plain-text document before any deeper reading.
+
+2026-09-13 16:04:42 | INFO | P03 | TXT: START
+2026-09-13 16:04:42 | INFO | P03 | TXT: wrote data\processed\txt_summary.txt
+2026-09-13 16:04:42 | INFO | P03 | TXT: END
+2026-09-13 16:04:42 | INFO | P03 | ===================================
+2026-09-13 16:04:42 | INFO | P03 | END main() - Executed successfully!
+2026-09-13 16:04:42 | INFO | P03 | ===================================

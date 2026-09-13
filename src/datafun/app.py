@@ -1,7 +1,7 @@
 """src/datafun/app.py - Project script.
 
-Author: Denise Case
-Date: 2026-08-23
+Author: Ronni Merrill
+Date: 2026-09-13
 
 HOW TO RUN THIS FILE:
 
@@ -86,15 +86,18 @@ PROCESSED_DIR: Final[Path] = Path("data") / "processed"
 
 CSV_PIPELINE_DESCRIPTION: Final[str] = r"""
 Read the world happiness CSV file,
-extract the selected numeric column,
-calculate descriptive statistics,
+calculate the average happiness score,
+identify countries above the average,
 verify the results,
-and write the statistics to a text file.
+save the countries to a CSV file,
+and create a chart of the top 10 countries by happiness score.
 """
 
 CSV_INPUT: Final[Path] = RAW_DIR / "2020_happiness.csv"
-CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "csv_ladder_score_stats.txt"
+CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "countries_above_average.csv"
+CSV_CHART: Final[Path] = PROCESSED_DIR / "happiness_above_average.png"
 CSV_COLUMN: Final[str] = "Ladder score"  # CUSTOM
+CSV_COUNTRY_COLUMN: Final[str] = "Country name"  # CUSTOM
 WHY_CSV_COLUMN: Final[str] = r"""
 The ladder score is the survey's overall happiness measure,
 so its distribution is the natural first summary of this dataset.
@@ -207,11 +210,14 @@ def main() -> None:
 
     LOG.info(f"Pipeline: {CSV_PIPELINE_DESCRIPTION}")
     LOG.info(f"Column: {CSV_COLUMN}")
+    LOG.info(f"Country column: {CSV_COUNTRY_COLUMN}")
     LOG.info(f"Why: {WHY_CSV_COLUMN}")
     run_etvl_csv(
         input_file=CSV_INPUT,
         output_file=CSV_OUTPUT,
+        chart_file=CSV_CHART,
         column_name=CSV_COLUMN,
+        country_column=CSV_COUNTRY_COLUMN,
         log=LOG,
     )
 

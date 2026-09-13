@@ -1,7 +1,7 @@
 """etvl_csv.py - CSV ETVL pipeline.
 
-Author: Denise Case
-Date: 2026-08-23
+Author: Ronni Merrill
+Date: 2026-09-13
 
 Practice key Python skills related to:
     - ETVL pipeline structure (Extract, Transform, Verify, Load)
@@ -24,15 +24,16 @@ RUN:
 
 # === DECLARE IMPORTS (BRING IN FREE CODE) ===
 
+# === DECLARE IMPORTS (BRING IN FREE CODE) ===
+
+import csv
 import logging
 from pathlib import Path
 
+import matplotlib.pyplot as plt
+
 from datafun.utils_etvl import (
     extract_csv_rows,
-    load_stats_report,
-    transform_column_to_floats,
-    transform_column_to_stats,
-    verify_stats,
 )
 
 # === SKILL: KEYWORD-ONLY ARGUMENTS ===
@@ -107,11 +108,125 @@ from datafun.utils_etvl import (
 # The logger is passed in as an argument so this function works in any context.
 
 
+def analyze_above_average_happiness(
+    *,
+    rows: list[dict[str, str]],
+    country_column: str,
+    score_column: str,
+    log: logging.Logger,
+) -> tuple[float, list[dict[str, str]]]:
+    """Calculate average happiness and find countries above the average."""
+
+    scores = []
+
+    for row in rows:
+        try:
+            score = float(row[score_column])
+            scores.append(score)
+        except KeyError, ValueError:
+            continue
+
+    if not scores:
+        raise ValueError("No valid happiness scores were found.")
+
+    average_score = sum(scores) / len(scores)
+
+    above_average = []
+
+    for row in rows:
+        try:
+            score = float(row[score_column])
+
+            if score > average_score:
+                above_average.append(
+                    {
+                        country_column: row[country_column],
+                        score_column: row[score_column],
+                    }
+                )
+        except KeyError, ValueError:
+            continue
+
+    above_average.sort(
+        key=lambda row: float(row[score_column]),
+        reverse=True,
+    )
+
+    log.info("Average happiness score: %.2f", average_score)
+    log.info("Countries above average: %d", len(above_average))
+
+    return average_score, above_average
+
+
+def save_above_average_results(
+    *,
+    results: list[dict[str, str]],
+    country_column: str,
+    score_column: str,
+    output_file: Path,
+    log: logging.Logger,
+) -> None:
+    """Save countries above the average happiness score."""
+
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_file.open(
+        "w",
+        newline="",
+        encoding="utf-8",
+    ) as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=[country_column, score_column],
+        )
+
+        writer.writeheader()
+        writer.writerows(results)
+
+    log.info("Saved above-average results to %s", output_file)
+
+
+def create_happiness_chart(
+    *,
+    results: list[dict[str, str]],
+    country_column: str,
+    score_column: str,
+    chart_file: Path,
+    log: logging.Logger,
+) -> None:
+    """Create a chart of the top 10 countries above average."""
+
+    top_10 = results[:10]
+
+    countries = [row[country_column] for row in reversed(top_10)]
+
+    scores = [float(row[score_column]) for row in reversed(top_10)]
+
+    chart_file.parent.mkdir(parents=True, exist_ok=True)
+
+    plt.figure(figsize=(10, 6))
+
+    plt.barh(countries, scores)
+
+    plt.xlabel("Happiness Score")
+    plt.ylabel("Country")
+    plt.title("Top 10 Countries Above Average Happiness Score")
+
+    plt.tight_layout()
+
+    plt.savefig(chart_file, dpi=150)
+    plt.close()
+
+    log.info("Saved happiness chart to %s", chart_file)
+
+
 def run_etvl_csv(
     *,
     input_file: Path,
     output_file: Path,
+    chart_file: Path,
     column_name: str,
+    country_column: str,
     log: logging.Logger,
 ) -> None:
     """Run the full CSV ETVL pipeline.
@@ -119,7 +234,9 @@ def run_etvl_csv(
     Arguments:
         input_file: Path to the input CSV file.
         output_file: Path to the output text file.
+        chart_file: Path to the output chart file.
         column_name: Name of the numeric column to summarize.
+        country_column: Name of the country column.
         log: Logger for logging messages.
 
     Returns:
@@ -146,19 +263,15 @@ def run_etvl_csv(
     # First convert the selected column from raw strings to numeric values.
     # Empty and non-numeric values are skipped.
 
-    values = transform_column_to_floats(
+    average_score, above_average = analyze_above_average_happiness(
         rows=rows,
-        column_name=column_name,
+        country_column=country_column,
+        score_column=column_name,
         log=log,
     )
 
     # The statistics module provides mean() and stdev().
     # stdev() requires at least two values - guard against a single-value list.
-
-    stats = transform_column_to_stats(
-        values=values,
-        log=log,
-    )
 
     # === V: VERIFY ===
 
@@ -166,9 +279,13 @@ def run_etvl_csv(
     # It is cheaper to detect a bad result before writing it to disk.
     # Use raise to signal an error the caller must handle.
 
-    verify_stats(
-        stats=stats,
-        log=log,
+    if not above_average:
+        raise ValueError("No countries were found above the average happiness score.")
+
+    log.info(
+        "Verified %d countries above the average score of %.2f",
+        len(above_average),
+        average_score,
     )
 
     # === L: LOAD ===
@@ -179,10 +296,19 @@ def run_etvl_csv(
     # Use f-strings to format numeric output
     # to a consistent number of decimal places.
 
-    load_stats_report(
-        stats=stats,
-        column_name=column_name,
-        out_path=output_file,
+    save_above_average_results(
+        results=above_average,
+        country_column=country_column,
+        score_column=column_name,
+        output_file=output_file,
+        log=log,
+    )
+
+    create_happiness_chart(
+        results=above_average,
+        country_column=country_column,
+        score_column=column_name,
+        chart_file=chart_file,
         log=log,
     )
 
